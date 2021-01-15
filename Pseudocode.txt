@@ -1,0 +1,105 @@
+Function: Tracer {Real-time}
+	collectTrackerData(badge-RFID)
+
+	analyzeSymptoms()
+
+	INFO = reportInfected()
+
+	notifyContacts(INFO)
+	
+	hospitalFinder()
+	
+	surveyScheduler()
+
+
+Function: collectTrackerData
+	## collects data at all the entry points
+	## such as gate, building, floor
+
+	# obtain ID, LOCATION, TIMESTAMP information
+
+	if LOCATION is {an entry point}:
+		# obtain TEMPERATURE
+		if TEMPERATURE > {threshold}:
+			# warning alert to the app
+			# warning alert on the sensor
+			
+	addToDatabase(ID, LOCATION, TIMESTAMP, TEMPERATURE)
+	
+
+Function: addToDatabase
+	# add LOCATION, TIMESTAMP, TEMPERATURE
+	# to the database with ID as the primary field
+
+
+Function: analyzeSymptoms
+	## guidelines: guidelines from WHO/Health Ministry
+	## on potential symptom analysis
+
+	# gather half-weekly/on-demand self-diagnosed/medical-aid
+	# symptom survey based on WHO/Health Ministry guidelines
+
+	for all users:
+		if {match in guidelines}:
+			flag user as MAYBE-INFECTED
+
+
+Function: reportInfected
+	## INFECTED: list of users who have reported their 
+	## status as infected
+	
+	## MAYBE-INFECTED: list of users who were flagged as 
+	## infected based on guiudelines and symptom analysis
+	
+	for all users:
+		if MAYBE-INFECTED:
+			NOTIFICATION_INFO = clusterData(MAYBE-INFECTED)
+
+			# notification1: suggest user for preventive
+			# measures and checkups
+			# notification2: alert close-proximity
+
+		if INFECTED:
+			NOTIFICATION_INFO = clusterData(INFECTED)
+
+			# notification1: suggest user for quarantine
+			# notification2: alert close-proximity for infection
+
+	return NOTIFICATION_INFO
+
+
+Function: notifyContacts
+	for all in INFO:
+		# send alert messages to traced contacts
+		# to look out for infection
+		
+	for all users:
+		# provide list of users who are flagged as INFECTED
+	
+	for all users:
+		# send warning alert to teammates of INFECTED
+
+
+Function: clusterData
+	## INPUT: MAYBE-INFECTED/INFECTED
+
+	for all INPUT:
+		for all ID:
+			# make a time-series data using ID, TIMESTAMP and LOCATION
+			
+			# use ID as the epicenter and create a cluster
+			# based on TIMESTAMP close-proximity
+	
+	## DATA: possible contact with the infected person
+	return DATA
+
+
+Function: hospitalFinder
+	# provide contacts of nearby hospitals
+	# provide location of nearby hospitals and pharmacy
+
+
+Function: surveyScheduler
+	for all users:
+		# send survey half-weekly/on demand
+		# add survey info to the database
